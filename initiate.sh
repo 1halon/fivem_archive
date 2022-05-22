@@ -1,3 +1,4 @@
+#!/bin/bash
 dir=$(dirname "$(readlink -f "$BASH_SOURCE")" | cut -d/ -f-3,5-)
 
 if [[ -d "${dir}/halon-fivem" ]]; then
