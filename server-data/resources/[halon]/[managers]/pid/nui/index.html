@@ -7,25 +7,42 @@
     <script src="script.js"></script>
 </head>
 
-<body>
+<body style="display: none;">
     <div class="container">
         <div class="box">
             <div class="wrapper">
-                <div class="header">ID</div>
+                <div class="header">IDENTIFICATION</div>
                 <div class="inputs">
-                    <div class="title">First Name</div>
-                    <input type="text" name="firstname" id="firstname" min="3" max="24">
-                    <div class="title">Surname</div>
-                    <input type="text" name="surname" id="surname" min="3" max="16">
-                    <div class="title">Date of Birth</div>
-                    <input type="date" name="dob" id="dob" min="1950-01-01" value="1990-01-01">
-                    <div class="title">Gender</div>
-                    <select name="gender" id="gender">
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                    </select>
-                    <div class="title">Heigth</div>
-                    <input type="number" name="heigth" id="heigth" min="150" max="200" onkeydown="return false;" value="175">
+                    <div style="display: flex;">
+                        <div class="input">
+                            <div class="title">First Name</div>
+                            <input type="text" name="firstname" id="firstname" min="3" max="24"
+                                onkeypress="if (this.value.length > this.max) event.preventDefault();">
+                        </div>
+                        <div class="input">
+                            <div class="title">Surname</div>
+                            <input type="text" name="surname" id="surname" min="3" max="16"
+                                onkeypress="if (this.value.length > this.max) event.preventDefault();">
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="input">
+                            <div class="title">Gender</div>
+                            <select name="gender" id="gender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="input">
+                            <div class="title">Heigth</div>
+                            <input type="number" name="heigth" id="heigth" min="150" max="200" onkeydown="return false;"
+                                value="175">
+                        </div>
+                    </div>
+                    <div class="input">
+                        <div class="title">Date of Birth</div>
+                        <input type="date" name="dob" id="dob" min="1950-01-01" value="1990-01-01">
+                    </div>
                 </div>
                 <button>Create</button>
             </div>

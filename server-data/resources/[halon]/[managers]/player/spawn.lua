@@ -29,7 +29,7 @@ function FreezePlayer(id, freeze)
 end
 
 function SetModel(model)
-    LoadModel(model)
+    exports["utilities"]:LoadModel(model)
     SetPlayerModel(PlayerId(), model)
     SetModelAsNoLongerNeeded(model)
     SetPedComponentVariation(GetPlayerPed(-1), 0, 0, 0, 2)
@@ -123,6 +123,8 @@ function SpawnPlayer(spawn)
         end
     )
 end
+
+SpawnPlayer()
 
 exports("FreezePlayer", FreezePlayer)
 exports("SetModel", SetModel)

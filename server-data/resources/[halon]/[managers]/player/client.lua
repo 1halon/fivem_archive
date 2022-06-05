@@ -2,7 +2,7 @@ local noclip, noclip_speed = false, 3
 Citizen.CreateThread(
     function()
         local NCIBForm =
-            SetupIBScaleform(
+            exports["utilities"]:SetupIBScaleform(
             {
                 {
                     {GetControlInstructionalButton(2, 36, true), GetControlInstructionalButton(2, 21, true)},
