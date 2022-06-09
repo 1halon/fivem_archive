@@ -24,8 +24,8 @@ function FreezePlayer(id, freeze)
         FreezeEntityPosition(ped, false)
         SetPlayerInvincible(id, false)
     end
-    TriggerEvent("halon:PlayerFreezed", freeze)
-    TriggerServerEvent("halon:PlayerFreezed", freeze)
+    TriggerEvent("PF", freeze)
+    TriggerServerEvent("PF", freeze)
 end
 
 function SetModel(model)
@@ -35,9 +35,9 @@ function SetModel(model)
     SetPedComponentVariation(GetPlayerPed(-1), 0, 0, 0, 2)
 end
 
-RegisterNetEvent("halon_player:SpawnPlayer")
+RegisterNetEvent("SP")
 AddEventHandler(
-    "halon_player:SpawnPlayer",
+    "SP",
     function(spawn)
         SpawnPlayer(spawn)
     end
@@ -118,8 +118,8 @@ function SpawnPlayer(spawn)
             Citizen.Wait(1000)
             FreezePlayer(PlayerId(), false)
             spawn_lock = false
-            TriggerEvent("halon:PlayerSpawned", spawn)
-            TriggerServerEvent("halon:PlayerSpawned", spawn)
+            TriggerEvent("PS", spawn)
+            TriggerServerEvent("PS", spawn)
         end
     )
 end

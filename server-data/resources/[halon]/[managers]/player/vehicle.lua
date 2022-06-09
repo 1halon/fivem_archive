@@ -12,8 +12,8 @@ Citizen.CreateThread(
                 if not IsPedInAnyVehicle(ped, false) then
                     isPlayerInAnyVehicle = false
                     playerCurrentVehicle.coords = GetEntityCoords(playerCurrentVehicle.entity)
-                    TriggerEvent("halon_player:PlayerLeftAVehicle", playerCurrentVehicle)
-                    TriggerServerEvent("halon_player:PlayerLeftAVehicle", playerCurrentVehicle)
+                    TriggerEvent("PLAV", playerCurrentVehicle)
+                    TriggerServerEvent("PLAV", playerCurrentVehicle)
                     playerCurrentVehicle = {}
                 end
             else
@@ -29,8 +29,8 @@ Citizen.CreateThread(
                         coords = GetEntityCoords(vehicle),
                         netID = VehToNet(vehicle)
                     }
-                    TriggerEvent("halon_player:PlayerEnteredAVehicle", playerCurrentVehicle)
-                    TriggerServerEvent("halon_player:PlayerEnteredAVehicle", playerCurrentVehicle)
+                    TriggerEvent("PEAV", playerCurrentVehicle)
+                    TriggerServerEvent("PEAV", playerCurrentVehicle)
                 end
             end
         end

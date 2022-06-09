@@ -5,6 +5,7 @@ Citizen.CreateThread(
         while true do
             Citizen.Wait(0)
 
+            -- DISABLE AI
             SetAmbientVehicleRangeMultiplierThisFrame(multiplier)
             SetCreateRandomCops(false)
             SetCreateRandomCopsNotOnScenarios(false)
@@ -17,14 +18,6 @@ Citizen.CreateThread(
             SetScenarioPedDensityMultiplierThisFrame(multiplier, multiplier)
             SetVehicleDensityMultiplierThisFrame(multiplier)
 
-            for i = 1, NetworkGetNumConnectedPlayers() do
-                local blip = GetBlipFromEntity(GetPlayerPed(i))
-                if DoesEntityExist(blip) then
-                    SetBlipShowCone(blip, false)
-                    SetBlipDisplay(blip, 0)
-                end
-            end
-
             local player, ped = PlayerId(), PlayerPedId()
             local x, y, z, h = table.unpack(vector4(GetEntityCoords(ped), GetEntityHeading(ped)))
 
@@ -32,22 +25,6 @@ Citizen.CreateThread(
             ClearPlayerWantedLevel(player)
             SetPoliceIgnorePlayer(player, true)
             SetPoliceRadarBlips(false)
-
-            if hideHUD then
-                HideAreaAndVehicleNameThisFrame()
-                HideHelpTextThisFrame()
-                HideHudAndRadarThisFrame()
-            else
-                DrawText(
-                    {label = "COORDS"},
-                    function()
-                        AddTextComponentSubstringPlayerName(string.format("%.2f", x))
-                        AddTextComponentSubstringPlayerName(string.format("%.2f", y))
-                        AddTextComponentSubstringPlayerName(string.format("%.2f", z))
-                        AddTextComponentSubstringPlayerName(string.format("%.2f", h))
-                    end
-                )
-            end
         end
     end
 )
@@ -64,13 +41,5 @@ Citizen.CreateThread(
             ScaleformMovieMethodAddParamInt(3)
             EndScaleformMovieMethod()
         end
-    end
-)
-
-RegisterNetEvent("halon_utilities:hideHUD")
-AddEventHandler(
-    "halon_utilities:hideHUD",
-    function(boolean)
-        hideHUD = boolean
     end
 )

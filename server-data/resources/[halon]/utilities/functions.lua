@@ -26,18 +26,18 @@ function DrawText2(opts, p1)
     EndTextCommandPrint(opts.duration or 5000, true)
 end
 
-function FeedPostTicker(t, opts, p2)
+function FeedPostTicker(type, opts, pedID)
     BeginTextCommandThefeedPost(opts.label or "STRING")
     AddTextComponentSubstringPlayerName(opts.text)
-    if t == "MESSAGE_TEXT" or t == "STATS" then
+    if type == "MESSAGE_TEXT" or type == "STATS" then
         Citizen.CreateThread(
             function()
-                local headshot = RegisterPedheadshot(PlayerPedId())
+                local headshot = RegisterPedheadshot(pedID or PlayerPedId())
                 while not IsPedheadshotReady(headshot) or not IsPedheadshotValid(headshot) do
                     Citizen.Wait(0)
                 end
                 local txd = GetPedheadshotTxdString(headshot)
-                if t == "MESSAGE_TEXT" then
+                if type == "MESSAGE_TEXT" then
                     post =
                         EndTextCommandThefeedPostMessagetext(
                         txd,
@@ -47,14 +47,14 @@ function FeedPostTicker(t, opts, p2)
                         GetPlayerName(PlayerId()),
                         "New Message"
                     )
-                elseif t == "STATS" then
+                elseif type == "STATS" then
                     post = EndTextCommandThefeedPostStats(opts.text, 14, opts.newStats, opts.oldStats, false, txd, txd)
                 end
                 EndTextCommandThefeedPostTicker(opts.blink or false, opts.showInBrief or false)
                 UnregisterPedheadshot(headshot)
             end
         )
-    elseif t == "NOTIFICATION" then
+    elseif type == "NOTIFICATION" then
         post = EndTextCommandThefeedPostTicker(opts.blink or false, opts.showInBrief or false)
     end
     if opts.timeout then

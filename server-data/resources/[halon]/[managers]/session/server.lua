@@ -1,23 +1,4 @@
 local player_data = {}
-RegisterNetEvent("halon_session:GetPlayerData")
-AddEventHandler(
-    "halon_session:GetPlayerData",
-    function(callback, player, ...)
-        if type(source) == "number" then
-            player = source
-        end
-        local data = player_data[tostring(player)] or {}
-        if callback then
-            local f, cerr = load(callback)
-            if not cerr then
-                local status, retval = pcall(f, data, ...)
-                if status then
-                    func(data, ...)
-                end
-            end
-        end
-    end
-)
 
 AddEventHandler(
     "playerConnecting",
@@ -81,7 +62,7 @@ AddEventHandler(
                 end
             )
         else
-            deferrals.done("Steam")
+            deferrals.done("STEAM")
         end
         deferrals.handover(
             {
@@ -108,7 +89,7 @@ AddEventHandler(
         if last_coords.xy ~= vector2(0, 0) and id then
             local last_coords_string, _ = json.encode(last_coords):gsub("w", "heading")
             MySQL.Async.execute(
-                "UPDATE players SET last_coords=@last_coords, last_login=CURRENT_TIMESTAMP WHERE id=@id",
+                "UPDATE players SET last_coords=@last_coords WHERE id=@id",
                 {
                     ["@last_coords"] = last_coords_string,
                     ["@id"] = id
@@ -128,7 +109,6 @@ AddEventHandler(
         player_data[_oldID] = nil
 
         local pid, last_coords = player_data[_source].pid, player_data[_source].last_coords
-        TriggerClientEvent("halon_pid:PID", source, pid, last_coords)
     end
 )
 

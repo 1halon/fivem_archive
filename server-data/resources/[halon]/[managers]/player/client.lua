@@ -19,6 +19,10 @@ Citizen.CreateThread(
                 {
                     {GetControlInstructionalButton(2, 33, true), GetControlInstructionalButton(2, 32, true)},
                     "Forward/Backward"
+                },
+                {
+                    {GetControlInstructionalButton(2, 288, true)},
+                    "On/Off"
                 }
             }
         )
