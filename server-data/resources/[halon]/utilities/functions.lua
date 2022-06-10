@@ -27,6 +27,7 @@ function DrawText2(opts, p1)
 end
 
 function FeedPostTicker(type, opts, pedID)
+    local post
     BeginTextCommandThefeedPost(opts.label or "STRING")
     AddTextComponentSubstringPlayerName(opts.text)
     if type == "MESSAGE_TEXT" or type == "STATS" then
@@ -38,8 +39,7 @@ function FeedPostTicker(type, opts, pedID)
                 end
                 local txd = GetPedheadshotTxdString(headshot)
                 if type == "MESSAGE_TEXT" then
-                    post =
-                        EndTextCommandThefeedPostMessagetext(
+                    post = EndTextCommandThefeedPostMessagetext(
                         txd,
                         txd,
                         false,
@@ -75,15 +75,25 @@ function FeedPostTicker(type, opts, pedID)
     return post
 end
 
-function GetControlKey(key)
-    local keys = {
-        ["PAGEUP"] = 10,
-        ["PAGEDOWN"] = 11,
-        ["LEFT ALT"] = 19,
-        ["LEFT SHIFT"] = 21,
-        ["SPACEBAR"] = 22,
-        ["F"] = 23
-    }
+local keys = {
+    ["PAGEUP"] = 10,
+    ["PAGEDOWN"] = 11,
+    ["LEFT ALT"] = 19,
+    ["LEFT SHIFT"] = 21,
+    ["SPACEBAR"] = 22,
+    ["F"] = 23
+}
+
+function GetControlByIndex(index)
+    for key, value in pairs(keys) do
+        if value == index then
+            return key
+        end
+        return nil
+    end
+end
+
+function GetControlByKey(key)
     return keys[key]
 end
 
@@ -102,7 +112,7 @@ function GetNearbyPlayers(radius)
         if _player == player or dist > radius then
             return
         end
-        dists[#dists + 1] = {ped = player_ped, dist = dist}
+        dists[#dists + 1] = { ped = player_ped, dist = dist }
     end
     table.sort(
         dists,
@@ -123,16 +133,23 @@ function LoadAnimDict(animDict)
     return animDict
 end
 
-function LoadModel(model)
+function LoadModel(model, timeout)
     local hash = GetHashKey(model)
-    LoadModelWithHash(hash)
+    LoadModelWithHash(hash, timeout)
     return hash, model
 end
 
-function LoadModelWithHash(hash)
+function LoadModelWithHash(hash, timeout)
+    local waiting = 0
     RequestModel(hash)
     while not HasModelLoaded(hash) do
-        Citizen.Wait(0)
+        Citizen.Wait(100)
+        if timeout then
+            waiting = waiting + 100 
+            if waiting > timeout then
+                break
+            end
+        end
     end
     return hash
 end
@@ -140,8 +157,10 @@ end
 exports("DrawHelp", DrawHelp)
 exports("DrawText", DrawText)
 exports("FeedPostTicker", FeedPostTicker)
-exports("GetControlKey", GetControlKey)
+exports("GetControlByIndex", GetControlByIndex)
+exports("GetControlByKey", GetControlByKey)
 exports("GetClosestPlayer", GetClosestPlayer)
 exports("GetNearbyPlayers", GetNearbyPlayers)
 exports("LoadAnimDict", LoadAnimDict)
 exports("LoadModel", LoadModel)
+exports("LoadModelWithHash", LoadModelWithHash)

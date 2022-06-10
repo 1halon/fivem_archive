@@ -1,4 +1,4 @@
-function SetupIBScaleform(buttons)
+function InstructionalButtons(buttons)
     local scaleform = RequestScaleformMovie("instructional_buttons")
     while not HasScaleformMovieLoaded(scaleform) do
         Citizen.Wait(0)
@@ -55,7 +55,7 @@ function SetupIBScaleform(buttons)
     return scaleform
 end
 
-function SetupMSMScaleform(header, message)
+function MidsizedMessage(header, message)
     local scaleform = RequestScaleformMovie("MIDSIZED_MESSAGE")
     while not HasScaleformMovieLoaded(scaleform) do
         Citizen.Wait(0)
@@ -70,5 +70,5 @@ function SetupMSMScaleform(header, message)
     return scaleform
 end
 
-exports("SetupIBScaleform", SetupIBScaleform)
-exports("SetupMSMScaleform", SetupMSMScaleform)
+exports("InstructionalButtons", InstructionalButtons)
+exports("MidsizedMessage", MidsizedMessage)

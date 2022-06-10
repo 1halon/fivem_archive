@@ -1,3 +1,0 @@
-2022-06-09T21:25:17.390Z - ERROR: connect ECONNREFUSED 127.0.0.1:3306
-2022-06-09T21:25:17.467Z: [system] [38ms] SELECT job, society FROM jobs : []
-2022-06-09T21:25:17.468Z - ERROR: [system] An error happens for query "SELECT job, society FROM jobs : []": connect ECONNREFUSED 127.0.0.1:3306

@@ -23,18 +23,18 @@ AddEventHandler(
             deferrals.update("Checking for whitelist privilege...")
             MySQL.Async.fetchAll(
                 "SELECT id FROM whitelist WHERE id=@id",
-                {["@id"] = identifiers.steam},
+                { ["@id"] = identifiers.steam },
                 function(result)
                     if #result == 0 then
                         deferrals.done("You're not whitelisted. Your SteamHEX: " .. identifiers.steam)
                     else
                         MySQL.Async.fetchAll(
                             "SELECT perm, pid, last_coords, job FROM players WHERE id=@id",
-                            {["@id"] = identifiers.steam},
+                            { ["@id"] = identifiers.steam },
                             function(result)
                                 if #result ~= 0 then
                                     local perm, pid, last_coords, job =
-                                        result[1].perm,
+                                    result[1].perm,
                                         result[1].pid,
                                         result[1].last_coords,
                                         result[1].job
@@ -42,6 +42,7 @@ AddEventHandler(
                                         ExecuteCommand(("remove_principal identifier.steam:%s %s"):format(id, perm))
                                         ExecuteCommand(("add_principal identifier.steam:%s %s"):format(id, perm))
                                     end
+
                                     if perm then
                                         AddPrincipal(perm)
                                     end
@@ -117,14 +118,15 @@ RegisterCommand(
     function(source, args)
         local query, cmd, id = nil, table.unpack(args)
         if cmd == "add" then
-            query =
-                "INSERT IGNORE INTO whitelist(id) VALUES (@id); INSERT IGNORE INTO players(id, perm, pid, last_coords, inventory, job, last_login) VALUES (@id, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, CURRENT_TIMESTAMP)"
+            query = "INSERT IGNORE INTO whitelist(id) VALUES (@id); INSERT IGNORE INTO players(id, perm, pid, last_coords, inventory, job, last_login) VALUES (@id, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, CURRENT_TIMESTAMP)"
         elseif cmd == "delete" then
             query = "DELETE FROM whitelist WHERE id=@id"
         elseif cmd == "clear" then
             MySQL.Async.execute("DELETE FROM whitelist WHERE 1")
         end
-        MySQL.Async.execute(query, {["@id"] = id})
+        if query then
+            MySQL.Async.execute(query, { ["@id"] = id })
+        end
     end,
     true
 )

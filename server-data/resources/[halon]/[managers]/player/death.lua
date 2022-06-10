@@ -1,6 +1,7 @@
 Citizen.CreateThread(
     function()
         local tod = nil
+        local wasVictimInAnyVehicle, victimVehicleName, victimVehicleSeat, killerPedType, isKillerInAnyVehicle, killerVehicleName, killerVehicleSeat, eventName
         while true do
             Citizen.Wait(0)
             local player = PlayerId()
@@ -14,8 +15,7 @@ Citizen.CreateThread(
 
                         if IsPedInAnyVehicle(ped, false) then
                             wasVictimInAnyVehicle = true
-                            victimVehicleName =
-                                GetDisplayNameFromVehicleModel(GetEntityModel(GetVehiclePedIsUsing(ped)))
+                            victimVehicleName = GetDisplayNameFromVehicleModel(GetEntityModel(GetVehiclePedIsUsing(ped)))
                             victimVehicleSeat = GetPedVehicleSeat(ped)
                         else
                             wasVictimInAnyVehicle = false
@@ -29,8 +29,7 @@ Citizen.CreateThread(
                             killerPedType = GetPedType(killer)
                             if IsPedInAnyVehicle(killer, false) then
                                 isKillerInAnyVehicle = true
-                                killerVehicleName =
-                                    GetDisplayNameFromVehicleModel(GetEntityModel(GetVehiclePedIsUsing(killer)))
+                                killerVehicleName = GetDisplayNameFromVehicleModel(GetEntityModel(GetVehiclePedIsUsing(killer)))
                                 killerVehicleSeat = GetPedVehicleSeat(killer)
                             else
                                 isKillerInAnyVehicle = false
@@ -55,12 +54,11 @@ Citizen.CreateThread(
                             victimVehicleSeat = victimVehicleSeat,
                             killer_type = killer_type
                         }
-                        
+
                         if killer == ped or killer == -1 then
-                            eventName = "halon:PlayerDied"
+                            eventName = "PD"
                         else
-                            info =
-                                table.insert(
+                            info = table.insert(
                                 info,
                                 {
                                     killerID = killerID,
@@ -72,7 +70,7 @@ Citizen.CreateThread(
                                     killerVehicleSeat = killerVehicleSeat
                                 }
                             )
-                            eventName = "halon:PlayerKilled"
+                            eventName = "PK"
                         end
 
                         TriggerEvent(eventName, info)

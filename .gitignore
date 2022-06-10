@@ -1,3 +1,4 @@
 server-data/cache/
 #server-data/log/
 server-data/resources/\[local\]/
+.vscode

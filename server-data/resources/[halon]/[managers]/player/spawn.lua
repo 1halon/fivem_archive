@@ -1,4 +1,4 @@
-local default_spawn, default_model = {x = -1037.0, y = -2737.0, z = 20.0, heading = 329.0}, "mp_m_freemode_01"
+local default_spawn, default_model = { x = -1037.0, y = -2737.0, z = 20.0, heading = 329.0 }, "mp_m_freemode_01"
 local spawn_lock = false
 
 function FreezePlayer(id, freeze)
@@ -29,7 +29,7 @@ function FreezePlayer(id, freeze)
 end
 
 function SetModel(model)
-    exports["utilities"]:LoadModel(model)
+    LoadModel(model)
     SetPlayerModel(PlayerId(), model)
     SetModelAsNoLongerNeeded(model)
     SetPedComponentVariation(GetPlayerPed(-1), 0, 0, 0, 2)
@@ -57,7 +57,7 @@ function SpawnPlayer(spawn)
     spawn.model = spawn.model or default_model
 
     if not IsPlayerSwitchInProgress() then
-    --SwitchOutPlayer(PlayerPedId(), 0, 1)
+        --SwitchOutPlayer(PlayerPedId(), 0, 1)
     end
     Citizen.CreateThread(
         function()
@@ -77,7 +77,7 @@ function SpawnPlayer(spawn)
             local player, ped = PlayerId(), PlayerPedId()
             local coords, coords2 = vector3(-1195.55, -1788.25, 50.0), GetEntityCoords(ped)
             local cam, cam2 =
-                CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", coords.xy, coords2.z + 75, 0.0, 0.0, 0.0, 90.0, false),
+            CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", coords.xy, coords2.z + 75, 0.0, 0.0, 0.0, 90.0, false),
                 CreateCameraWithParams(
                     "DEFAULT_SCRIPTED_CAMERA",
                     coords2.xy,
@@ -124,7 +124,11 @@ function SpawnPlayer(spawn)
     )
 end
 
-SpawnPlayer()
+--SpawnPlayer()
+
+RegisterCommand("spawn", function()
+    SpawnPlayer()
+end)
 
 exports("FreezePlayer", FreezePlayer)
 exports("SetModel", SetModel)
