@@ -1,9 +1,8 @@
-Controls = {}
-require "controls_table"
+--load(LoadResourceFile("base", "shared/controls_table.lua"), "shared/controls_table.lua")()
 
 ---@param id number
 local function GetControlByID(id)
-    return Controls[id].id
+    return Controls[id + 1]
 end
 
 ---@param key string
@@ -18,7 +17,7 @@ end
 ---@param name string
 local function GetControlByName(name)
     for _, value in ipairs(Controls) do
-        if value.key == key then
+        if value.name == name then
             return value
         end
     end

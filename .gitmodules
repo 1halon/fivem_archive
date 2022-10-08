@@ -1,0 +1,6 @@
+[submodule "resources/[vendors]/[natives]/screenshot-basic"]
+	path = resources/[vendors]/[natives]/screenshot-basic
+	url = https://github.com/citizenfx/screenshot-basic.git
+[submodule "resources/[vendors]/utk_render"]
+	path = resources/[vendors]/utk_render
+	url = https://github.com/utkuali/utk_render.git
