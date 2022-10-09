@@ -1,5 +1,4 @@
-local multiplier = Config.ai.multiplier
-local randomcops = Config.ai.randomcops
+local multiplier, randomcops = Config.ai.multiplier, Config.ai.randomcops
 
 Citizen.CreateThread(
     function()

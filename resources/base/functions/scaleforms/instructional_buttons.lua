@@ -1,3 +1,5 @@
+---@alias button table<number, table<number, string> | string>
+---@param buttons table<number, button>
 function InstructionalButtons(buttons)
     local scaleform = RequestScaleformMovie('instructional_buttons')
     while not HasScaleformMovieLoaded(scaleform) do

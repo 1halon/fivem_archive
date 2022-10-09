@@ -1,4 +1,4 @@
---load(LoadResourceFile("base", "shared/controls_table.lua"), "shared/controls_table.lua")()
+load(LoadResourceFile("base", "shared/controls_table.lua"), "shared/controls_table.lua")()
 
 ---@param id number
 local function GetControlByID(id)
@@ -31,13 +31,14 @@ local functions = {
 
 ---@param by 'ID' | 'KEY' | 'NAME'
 ---@param control number | string
+---@return { id: number, key: string, name: string }
 function GetControl(by, control)
     assert(by == 'ID' or by == 'KEY' or by == 'NAME', '[INVALID ARG] by')
     local control_type = type(control)
     assert((control_type == "number" and 0 <= control and control <= 360) or control_type == "string",
         '[INVALID ARG] control')
 
-    ---@type fun(control: number | string): number
+    ---@type fun(control: number | string): { id: number, key: string, name: string }
     local func = functions[by]
     return func(control)
 end
