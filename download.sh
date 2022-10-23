@@ -7,7 +7,7 @@ cygwin*) os="windows" ;;
 esac
 
 if [ -z $1 ]; then
-    echo $0: INVALID buildID && exit 2
+    echo $0: INVALID buildID #&& exit 2
 fi
 
 if [ $os == "linux" ]; then
@@ -22,4 +22,5 @@ if [ $os == "windows" ]; then
     command="7z x -so $filename | tar xf - -C server"
 fi
 
-curl https://runtime.fivem.net/artifacts/fivem/$build/master/${1}/$filename -O && rm -rf server && mkdir server && $(command)
+curl https://runtime.fivem.net/artifacts/fivem/$build/master/${1-"5848-4f71128ee48b07026d6d7229a60ebc5f40f2b9db"}/$filename -O && 
+    rm -rf server && mkdir server && $($command) && rm -f $filename

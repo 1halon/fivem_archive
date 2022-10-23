@@ -17,7 +17,7 @@ Citizen.CreateThread(
             SetVehicleDensityMultiplierThisFrame(multiplier)
 
             local player, ped = PlayerId(), PlayerPedId()
-            local x, y, z = table.unpack(vector4(GetEntityCoords(ped)))
+            local x, y, z = table.unpack(vector3(GetEntityCoords(ped)))
 
             ClearAreaOfCops(x, y, z, 100, 0)
             ClearPlayerWantedLevel(player)
