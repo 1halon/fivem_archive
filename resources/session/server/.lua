@@ -1,23 +1,34 @@
+local playerData = {}
+
 AddEventHandler("playerConnecting",
     ---@param playerName string
     ---@param setKickReason fun(reason: string)
     ---@param deferrals { defer: fun(); done: fun(failureReason?: string); handover: fun(data: table); presentCard: fun(card: string | table, cb?: fun(data: any, rawData: string)); update: fun(message: string) }
-    ---@param source string
-    function(playerName, setKickReason, deferrals, source)
+    function(playerName, setKickReason, deferrals)
         local identifiers = GetPIdentifiers(GetPlayerIdentifiers(source))
+        playerData[source] = {}
+
+        if identifiers.steam == nil then
+            return deferrals.done("STEAM")
+        end
+
+        deferrals.defer()
+        deferrals.update(string.format("Checking for whitelist privilege... (%s)", identifiers.steam))
+
+        deferrals.done()
     end)
 
 AddEventHandler("playerJoining",
-    ---@param source string
     ---@param oldID string
-    function(source, oldID)
-
+    function(oldID)
+        playerData[source] = playerData[oldID]
+        playerData[oldID] = nil
     end)
 
 AddEventHandler('playerDropped',
     ---@param reason string
     function(reason)
-
+        playerData[source] = nil
     end)
 
 ---@param pIdentifiers table

@@ -26,12 +26,17 @@ Logger = {
     colors = colors
 }
 
+---@param text string
+---@param color colors | nil
+function Logger.colorize(text, color)
+    return string.format('%s%s%s ', colors[color or 'white'], text, colors.white) or text
+end
+
 ---@param prefix string
 ---@param color colors | nil
 ---@alias prefix { color: colors, prefix: string }
 function Logger.prefix(prefix, color)
-    local code = colors[color or 'white']
-    return prefix and string.format('%s[%s]%s ', code, prefix, colors.white) or ''
+    return Logger.colorize(string.format('[%s]', prefix), color)
 end
 
 ---@param message string
@@ -68,6 +73,12 @@ end
 ---@param ... prefix
 function Logger.success(message, ...)
     return Logger.log(message, { color = "green", prefix = "SUCCESS" }, ...)
+end
+
+---@param message string
+---@param ... prefix
+function Logger.verbose(message, ...)
+    return Logger.log(message, { color = "purple", prefix = "VERBOSE" }, ...)
 end
 
 ---@param message string
