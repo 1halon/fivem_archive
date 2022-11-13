@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "declaration": false,
+    "lib": ["ES2015"],
+    "moduleResolution": "Node",
+    "skipLibCheck": false,
+    "outDir": "dist",
+    "strict": true,
+    "target": "ES6"
+  },
+  "exclude": ["node_modules", "**/*.d.ts"],
+  "include": ["src/**/*.ts"]
+}
