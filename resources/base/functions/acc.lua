@@ -23,7 +23,7 @@ end
 ---@param child_principal string
 ---@param parent_principal string
 function RemovePrincipal(child_principal, parent_principal)
-    ExecuteCommand(string.format("add_principal %s %s", child_principal, parent_principal))
+    ExecuteCommand(string.format("remove_principal %s %s", child_principal, parent_principal))
 end
 
 ---@param principal string
