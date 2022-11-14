@@ -1,8 +1,8 @@
 fx_version 'cerulean'
 game 'gta5'
 
-client_script 'client/*.lua'
-server_script 'server/*.lua'
-shared_script 'shared/*.lua'
+client_script 'dist/client/*.js'
+server_script 'dist/server/*.js'
+shared_script 'dist/shared/*.js'
 
-lua54 'yes'
+turbo 'yes'

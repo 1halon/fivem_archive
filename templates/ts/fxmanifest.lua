@@ -5,4 +5,4 @@ client_script 'dist/client/*.js'
 server_script 'dist/server/*.js'
 shared_script 'dist/shared/*.js'
 
-turbo_repo 'yes'
+turbo 'yes'

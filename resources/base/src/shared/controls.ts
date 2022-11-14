@@ -1,3 +1,7 @@
+interface Control {
+  [key: string]: string | number;
+}
+
 const Controls = [
   {
     id: 0,
