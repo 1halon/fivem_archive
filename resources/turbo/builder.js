@@ -1,5 +1,3 @@
-const __resource = GetCurrentResourceName();
-
 let progress = {
   building: false,
   module: null,
@@ -13,8 +11,9 @@ const { spawn } = require("child_process"),
   { createWriteStream, existsSync, statSync, mkdirSync } = require("fs"),
   { readdir, readFile } = require("fs/promises"),
   { join, dirname } = require("path"),
-  excludedDirs = [".turbo", "node_modules"],
-  dirSize = async (path) => {
+  __resource = GetCurrentResourceName();
+(excludedDirs = [".turbo", "node_modules"]),
+  (dirSize = async (path) => {
     const files = (await readdir(path)).map((file) => {
       const _path = join(path, file);
       return { name: file, path: _path, stats: statSync(_path) };
@@ -31,8 +30,8 @@ const { spawn } = require("child_process"),
         )
       ).reduce((prev, curr) => prev + curr, 0)
     );
-  },
-  checkSize = async (resource_path, cache_path) => {
+  }),
+  (checkBuildSize = async (resource_path, cache_path) => {
     const resource_size = await dirSize(resource_path),
       cache_size = Number(await readFile(cache_path).catch(() => 0));
 
@@ -42,9 +41,58 @@ const { spawn } = require("child_process"),
       cache_size,
       resource_size - cache_size,
     ];
-  },
-  built_resources = {},
-  buildTask = {
+  }),
+  (buildTurbo = (path, resourceName, progress, cbf, cbt, cache_path) => {
+    const process = spawn("npx", ["turbo", "build", "--no-daemon"], {
+      cwd: path,
+      stdio: "pipe",
+    })
+      .on("spawn", () => console.log(`[${resourceName}] building...`))
+      .on("exit", function (code, signal) {
+        setImmediate(async function () {
+          progress.reset();
+          if (code !== 0 || signal) return cbf("build failed.");
+
+          write(cache_path, String(await dirSize(path)));
+          write(
+            cache_path.replace("size", "package_size"),
+            String(statSync(`${path}/package.json`).size)
+          );
+
+          function write(path, size) {
+            if (!existsSync(path))
+              mkdirSync(dirname(path), { recursive: true });
+            createWriteStream(path, {
+              flags: "w+",
+            }).end(size);
+          }
+
+          cbt();
+        });
+      });
+
+    process.stdout.on("data", (data) => console.log(data.toString()));
+    process.stderr.on("data", (data) => console.error(data.toString()));
+  });
+installPackages = (path, resourceName, progress, cbf, ...args) => {
+  const process = spawn("npm", ["i"], { cwd: path, stdio: "pipe" })
+    .on("spawn", () => console.log(`[${resourceName}] installing packages...`))
+    .on("exit", function (code, signal) {
+      setImmediate(function () {
+        if (code !== 0 || signal) {
+          progress.reset();
+          return cbf("Installation failed!");
+        }
+
+        buildTurbo(path, resourceName, progress, cbf, ...args);
+      });
+    });
+
+  process.stdout.on("data", (data) => console.log(data.toString()));
+  process.stderr.on("data", (data) => console.error(data.toString()));
+};
+(built_resources = {}),
+  (buildTask = {
     shouldBuild: (resourceName) =>
       GetResourceMetadata(resourceName, __resource) === "yes" &&
       !built_resources[resourceName],
@@ -57,11 +105,12 @@ const { spawn } = require("child_process"),
 
         const path = `${GetResourcePath(resourceName)}`,
           cache_path = `cache/${__resource}/${resourceName}/size`,
+          cbf = cb.bind(this, false),
           cbt = () => {
             built_resources[resourceName] = true;
             cb(true);
           },
-          cbf = cb.bind(this, false);
+          args = [path, resourceName, progress, cbf, cbt, cache_path];
 
         if (!existsSync(`${path}/turbo.json`))
           return cbf("[NOT FOUND] turbo.json");
@@ -72,57 +121,20 @@ const { spawn } = require("child_process"),
           module: resourceName,
         };
 
-        function buildTurbo() {
-          const process = spawn("npx", ["turbo", "build", "--no-daemon"], {
-            cwd: path,
-            stdio: "pipe",
-          })
-            .on("spawn", () => console.log(`[${resourceName}] building...`))
-            .on("exit", function (code, signal) {
-              setImmediate(async function () {
-                progress.reset();
-                if (code !== 0 || signal) return cb(false, "build failed.");
-                if (!existsSync(cache_path))
-                  mkdirSync(dirname(cache_path), { recursive: true });
-                createWriteStream(cache_path, {
-                  flags: "w+",
-                }).end(String(await dirSize(path)));
-                cbt();
-              });
-            });
-
-          process.stdout.on("data", (data) => console.log(data.toString()));
-          process.stderr.on("data", (data) => console.error(data.toString()));
-        }
-
-        function installPackages() {
-          const process = spawn("npm", ["i"], { cwd: path, stdio: "pipe" })
-            .on("spawn", () =>
-              console.log(`[${resourceName}] installing packages...`)
-            )
-            .on("exit", function (code, signal) {
-              setImmediate(function () {
-                if (code !== 0 || signal) {
-                  progress.reset();
-                  return cb(false, "Installation failed!");
-                }
-
-                buildTurbo();
-              });
-            });
-
-          process.stdout.on("data", (data) => console.log(data.toString()));
-          process.stderr.on("data", (data) => console.error(data.toString()));
-        }
-
         if (
           !existsSync(`${path}/node_modules`) ||
-          !existsSync(`${path}/package-lock.json`)
+          !existsSync(`${path}/package-lock.json`) ||
+          statSync(`${path}/package.json`).size !==
+            Number(
+              await readFile(cache_path.replace("size", "package_size")).catch(
+                () => 0
+              )
+            )
         )
-          return installPackages();
+          return installPackages(...args);
 
         const [isEqual, resource_size, cache_size, difference] =
-          await checkSize(path, cache_path);
+          await checkBuildSize(path, cache_path);
 
         console.log(
           `Equal: ${isEqual
@@ -130,12 +142,12 @@ const { spawn } = require("child_process"),
             .toUpperCase()} | Resource: ${resource_size} - Cache: ${cache_size} = Difference: ${difference}`
         );
 
-        if (!isEqual) return buildTurbo();
+        if (!isEqual) return buildTurbo(...args);
 
         cbt();
       })();
     },
-  };
+  });
 
 RegisterResourceBuildTaskFactory("turbo", () => buildTask);
 

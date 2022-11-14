@@ -2,11 +2,6 @@
   "dependencies": {
     "typescript": "*"
   },
-  "devDependencies": {
-    "@types/node": "*",
-    "@citizenfx/client": "*",
-    "@citizenfx/server": "*"
-  },
   "packageManager": "npm@8.19.2",
   "scripts": {
     "build": "npx tsc"

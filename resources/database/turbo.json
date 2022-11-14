@@ -1,0 +1,8 @@
+{
+  "pipeline": {
+    "build": {
+      "inputs": ["src/**/*.ts"],
+      "outputs": ["dist/**/*.js"]
+    }
+  }
+}

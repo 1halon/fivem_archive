@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "pocketbase": "*",
     "typescript": "*"
   },
   "packageManager": "npm@8.19.2",
