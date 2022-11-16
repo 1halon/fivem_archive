@@ -1,5 +1,6 @@
 type Arg = { color: Color; prefix: string };
 type Color = keyof typeof Logger.colors;
+type Level = "error" | "log" | "warn";
 
 class Logger {
   static colors = {
@@ -24,6 +25,7 @@ class Logger {
     orange: "^8",
     blue2: "^9",
   };
+  static levels: Level[] = ["error", "log", "warn"];
 
   static colorize(text: string, color?: Color) {
     return `${this.colors[color || "white"]}${text}${this.colors.white}`;
@@ -33,17 +35,27 @@ class Logger {
     return this.colorize(`[${prefix}] `, color || "white");
   }
 
-  static log(message: string, ...args: Arg[]) {
+  static log(message: string, ...args: Array<Level | Arg>) {
+    let level: Level = "log";
+    if (typeof args[0] === "string" && this.levels.includes(args[0])) {
+      level = args[0];
+      args = args.slice(1).filter((arg) => typeof arg === "object");
+    }
     const log =
-      args.reduce((prev, curr) => {
+      (args as Arg[]).reduce((prev, curr) => {
         return prev + this.prefix(curr.prefix, curr.color);
       }, "") + message;
-    console.log(log);
+    console[level](log);
     return log;
   }
 
   static error(message: string, ...args: Arg[]) {
-    return this.log(message, { color: "red", prefix: "ERROR" }, ...args);
+    return this.log(
+      message,
+      "error",
+      { color: "red", prefix: "ERROR" },
+      ...args
+    );
   }
 
   static info(message: string, ...args: Arg[]) {
@@ -55,7 +67,12 @@ class Logger {
   }
 
   static warn(message: string, ...args: Arg[]) {
-    return this.log(message, { color: "yellow", prefix: "WARNING" }, ...args);
+    return this.log(
+      message,
+      "warn",
+      { color: "yellow", prefix: "WARNING" },
+      ...args
+    );
   }
 }
 
