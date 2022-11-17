@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "typescript": "*"
-  },
-  "packageManager": "npm@8.19.2",
-  "scripts": {
-    "build": "npx tsc"
-  }
-}

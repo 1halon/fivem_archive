@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "allowJs": true,  
+    "baseUrl": "./",
+    "esModuleInterop": true,
+    "lib": ["ES2017"],
+    "module": "ES6",
+    "moduleResolution": "Node",
+    "noImplicitAny": false,
+    "outDir": "../../resources/[turbo]/",
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES6",
+    "types": ["@citizenfx/client", "@citizenfx/server", "@types/node"]
+  },
+  "exclude": ["node_modules", "**/*.d.ts"]
+}
