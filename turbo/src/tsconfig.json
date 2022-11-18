@@ -1,6 +1,10 @@
 {
   "extends": "configs/tsconfig.json",
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@*": ["resources/*"]
+    },
     "rootDir": "resources"
   },
   "exclude": ["node_modules", "**/*.d.ts"],

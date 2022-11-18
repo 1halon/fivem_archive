@@ -60,7 +60,7 @@ class Logger {
   }
 
   static info(message: string, ...args: Arg[]) {
-    return this.log(message, { color: "green", prefix: "SUCCESS" }, ...args);
+    return this.log(message, { color: "green", prefix: "INFO" }, ...args);
   }
 
   static verbose(message: string, ...args: Arg[]) {

@@ -1,1 +1,0 @@
-server_only "yes"

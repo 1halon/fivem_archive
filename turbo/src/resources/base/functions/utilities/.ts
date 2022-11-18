@@ -1,5 +1,3 @@
-require("./load");
-
 class UtilitiesFunctions {
   static DrawHelp(
     {

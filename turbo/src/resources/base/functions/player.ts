@@ -32,6 +32,9 @@ class PlayerFunctions {
   }
 
   static Spawn() {
+    if (this.SpawnLock) return;
+    this.SpawnLock = true;
+
     setTick(() => {
       const [playerID, pedID] = this.GetIAP();
 
@@ -47,6 +50,7 @@ class PlayerFunctions {
       ShutdownLoadingScreen();
       ShutdownLoadingScreenNui();
       this.Freeze(playerID, false);
+      this.SpawnLock = false;
     });
   }
 }

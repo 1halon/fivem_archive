@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
-    "allowJs": true,  
-    "baseUrl": "./",
+    "allowJs": true,
     "esModuleInterop": true,
     "lib": ["ES2017"],
-    "module": "ES6",
+    "module": "CommonJS",
     "moduleResolution": "Node",
     "noImplicitAny": false,
     "outDir": "../../resources/[turbo]/",

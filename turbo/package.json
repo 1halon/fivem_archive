@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "build": "rimraf ../resources/[turbo]/ && turbo run build"
+    "clean": "rimraf ../resources/[turbo]/",
+    "build": "pnpm run clean && turbo run build"
   },
   "devDependencies": {
     "@citizenfx/client": "latest",

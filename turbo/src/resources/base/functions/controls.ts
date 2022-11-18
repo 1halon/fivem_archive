@@ -1,5 +1,3 @@
-require("../shared/controls");
-
 const kn = (key: string, value: string) =>
     Controls.find((control: Control) => control[key] === value),
   functions = {
