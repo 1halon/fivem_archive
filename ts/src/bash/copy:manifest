@@ -1,0 +1,2 @@
+#!/bin/bash
+find ../../resources/[ts]/ -maxdepth 1 -type d -exec cp node_modules/configs/fxmanifest.lua {} \; && rm ../../resources/[turbo]/fxmanifest.lua

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noImplicitAny": false,
+    "outDir": "../../resources/[ts]/",
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES2017",
+    "types": ["@citizenfx/client", "@citizenfx/server", "@types/node"]
+  },
+  "exclude": ["node_modules", "**/*.d.ts"]
+}

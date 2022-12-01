@@ -1,0 +1,20 @@
+{
+  "scripts": {
+    "clean": "rimraf ../resources/[ts]/",
+    "build": "pnpm run clean && turbo run build"
+  },
+  "devDependencies": {
+    "@citizenfx/client": "latest",
+    "@citizenfx/server": "latest",
+    "@types/node": "latest",
+    "copyfiles": "latest",
+    "glob": "latest",
+    "rimraf": "latest",
+    "ts-loader": "latest",
+    "typescript": "latest",
+    "turbo": "latest",
+    "webpack": "latest",
+    "webpack-cli": "latest"
+  },
+  "packageManager": "pnpm@7.16.0"
+}
