@@ -16,5 +16,5 @@
     "webpack": "latest",
     "webpack-cli": "latest"
   },
-  "packageManager": "pnpm@7.16.0"
+  "packageManager": "pnpm@7.18.0"
 }

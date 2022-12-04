@@ -1,11 +1,11 @@
-import PlayerFunctions from "@base/functions/player.js";
-import Logger from "@base/shared/logger.js";
+import PlayerFunctions from "@base/functions/player";
+import Logger from "@base/shared/logger";
 
 RegisterCommand(
   "spawn",
   function (source: number, args: string[], rawCommand: string) {
     PlayerFunctions.Spawn();
-    Logger.info("SPAWN");
+    Logger.info(`${source}: SPAWN`);
   },
   false
 );

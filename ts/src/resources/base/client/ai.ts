@@ -1,5 +1,5 @@
-//import { CWait } from "@base/shared/.js";
-import Config from "@base/shared/config.js";
+import { CWait } from "@base/shared/main";
+import Config from "@base/shared/config";
 
 const { garbagetrucks, multiplier, randomboats, randomcops } = Config["ai"],
   multiplier_funcs = [
@@ -13,7 +13,7 @@ const { garbagetrucks, multiplier, randomboats, randomcops } = Config["ai"],
 
 setTick(async function () {
   while (true) {
-    //await CWait(1000);
+    await CWait(1000);
     SetGarbageTrucks(garbagetrucks);
     for (const key in multiplier_funcs)
       multiplier_funcs[key](multiplier, multiplier);

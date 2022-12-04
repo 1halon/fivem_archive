@@ -1,0 +1,2 @@
+#!/bin/bash
+find resources -type d -name 'copy' -exec sh -c 'cp -r {}/* ../../resources/[ts]/$(echo $1 | cut -d/ -f2)' _ {} \;

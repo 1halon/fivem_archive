@@ -8,5 +8,5 @@
     "rootDir": "resources"
   },
   "exclude": ["node_modules", "**/*.d.ts"],
-  "include": ["resources/**/*.*ts"]
+  "include": ["resources/**/*.ts"],
 }

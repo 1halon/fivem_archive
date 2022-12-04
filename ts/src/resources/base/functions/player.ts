@@ -1,4 +1,4 @@
-import LoadFunctions from "./utilities/load.js";
+import LoadFunctions from "./utilities/load";
 
 export = class PlayerFunctions {
   static SpawnLock = false;
