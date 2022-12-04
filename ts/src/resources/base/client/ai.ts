@@ -1,4 +1,4 @@
-import { CWait } from "@base/shared/main";
+import { Delay } from "@base/shared/main";
 import Config from "@base/shared/config";
 
 const { garbagetrucks, multiplier, randomboats, randomcops } = Config["ai"],
@@ -12,19 +12,17 @@ const { garbagetrucks, multiplier, randomboats, randomcops } = Config["ai"],
   ];
 
 setTick(async function () {
-  while (true) {
-    await CWait(1000);
-    SetGarbageTrucks(garbagetrucks);
-    for (const key in multiplier_funcs)
-      multiplier_funcs[key](multiplier, multiplier);
-    SetRandomBoats(randomboats);
+  await Delay();
+  SetGarbageTrucks(garbagetrucks);
+  //for (const key in multiplier_funcs)
+  //multiplier_funcs[key](multiplier, multiplier);
+  SetRandomBoats(randomboats);
 
-    const player = PlayerId(),
-      [x, y, z] = GetEntityCoords(PlayerPedId());
+  const player = PlayerId(),
+    [x, y, z] = GetEntityCoords(PlayerPedId());
 
-    ClearAreaOfCops(x, y, z, 100, 0);
-    ClearPlayerWantedLevel(player);
-    SetPoliceIgnorePlayer(player, randomcops);
-    SetPoliceRadarBlips(randomcops);
-  }
+  ClearAreaOfCops(x, y, z, 100, 0);
+  ClearPlayerWantedLevel(player);
+  SetPoliceIgnorePlayer(player, randomcops);
+  SetPoliceRadarBlips(randomcops);
 });

@@ -1,18 +1,20 @@
+import { Delay } from "@base/shared/main";
+
 export = class LoadFunctions {
-  static AnimDict(anim_dict: string) {
+  static async AnimDict(anim_dict: string) {
     DoesAnimDictExist(anim_dict) && RequestAnimDict(anim_dict);
 
-    while (!HasAnimDictLoaded(anim_dict)) Wait(0);
+    while (!HasAnimDictLoaded(anim_dict)) await Delay(0);
 
     return anim_dict;
   }
 
-  static Model(model: string | number, timeout?: number) {
+  static async Model(model: string | number, timeout?: number) {
     RequestModel(model);
 
     let wait = 0;
     while (!HasModelLoaded(model)) {
-      Wait(100);
+      await Delay(100);
       if (timeout) {
         wait += 100;
         if (wait > timeout) break;
@@ -22,10 +24,10 @@ export = class LoadFunctions {
     return model;
   }
 
-  static Scaleform(scaleformName: string) {
+  static async Scaleform(scaleformName: string) {
     const scaleform = RequestScaleformMovie(scaleformName);
 
-    while (HasScaleformMovieLoaded(scaleform)) Wait(0);
+    while (HasScaleformMovieLoaded(scaleform)) await Delay(0);
 
     return scaleform;
   }

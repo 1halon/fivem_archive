@@ -2,7 +2,7 @@ type Arg = { color: Color; prefix: string };
 type Color = keyof typeof Logger.colors;
 type Level = "error" | "log" | "warn";
 
-class Logger {
+export default class Logger {
   static colors = {
     0: "^0",
     1: "^1",
@@ -78,5 +78,3 @@ class Logger {
 }
 
 Logger.info("INITIALIZED", { color: "yellow", prefix: "LOGGER" });
-
-export = Logger;

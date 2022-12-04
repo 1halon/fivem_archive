@@ -1,3 +1,4 @@
+import { Delay } from "@base/shared/main";
 import LoadFunctions from "./utilities/load";
 
 export = class PlayerFunctions {
@@ -27,32 +28,34 @@ export = class PlayerFunctions {
     return [PlayerId(), PlayerPedId()];
   }
 
-  static SetModel(model: string | number) {
-    LoadFunctions.Model(model);
+  static async SetModel(model: string | number) {
+    await LoadFunctions.Model(model);
     SetPlayerModel(PlayerId(), model);
     SetModelAsNoLongerNeeded(model);
   }
 
-  static Spawn() {
+  static async Spawn() {
     if (this.SpawnLock) return;
     this.SpawnLock = true;
 
-    setTick(() => {
-      const [playerID, pedID] = this.GetIAP();
+    const [playerID, pedID] = this.GetIAP();
 
-      this.Freeze(playerID, true);
-      this.SetModel("s_m_y_marine_03");
+    this.Freeze(playerID, true);
+    await this.SetModel("s_m_y_marine_03");
 
-      SetEntityCoordsNoOffset(pedID, -1037, -2737.0, 20, false, false, false);
-      NetworkResurrectLocalPlayer(-1037, -2737.0, 20, 329, true, true);
-      ClearPedTasksImmediately(pedID);
-      RemoveAllPedWeapons(pedID, false);
-      ClearPlayerWantedLevel(playerID);
+    SetEntityCoordsNoOffset(pedID, -1037, -2737.0, 20, false, false, false);
+    NetworkResurrectLocalPlayer(-1037, -2737.0, 20, 329, true, true);
+    ClearPedTasksImmediately(pedID);
+    RemoveAllPedWeapons(pedID, false);
+    ClearPlayerWantedLevel(playerID);
 
-      ShutdownLoadingScreen();
-      ShutdownLoadingScreenNui();
-      this.Freeze(playerID, false);
-      this.SpawnLock = false;
-    });
+    /*while (!HasCollisionLoadedAroundEntity(pedID)) {
+      await Delay(0)
+    }*/
+
+    ShutdownLoadingScreen();
+    ShutdownLoadingScreenNui();
+    this.Freeze(playerID, false);
+    this.SpawnLock = false;
   }
-}
+};

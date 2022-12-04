@@ -1,37 +1,38 @@
 export default class UtilityFunctions {
   static DrawHelp(
-    {
-      beep,
-      duration,
-      label,
-    }: { beep?: boolean; duration?: number; label?: string },
+    opts?: { beep?: boolean; duration?: number; label?: string },
     cb?: () => void
   ) {
-    BeginTextCommandDisplayHelp(label || "STRING");
+    BeginTextCommandDisplayHelp(opts?.label || "STRING");
     typeof cb === "function" && cb();
-    EndTextCommandDisplayHelp(0, false, beep || false, duration || -1);
+    EndTextCommandDisplayHelp(
+      0,
+      false,
+      opts?.beep || false,
+      opts?.duration || -1
+    );
   }
 
   static DrawText(
-    { label, x, y }: { label?: string; x?: number; y?: number },
-    cb: () => void
+    opts?: { label?: string; x?: number; y?: number },
+    cb?: () => void
   ) {
-    BeginTextCommandDisplayText(label || "STRING");
+    BeginTextCommandDisplayText(opts?.label || "STRING");
     SetTextColour(255, 255, 255, 255);
     SetTextScale(1.0, 0.5);
     //SetTextCentre(true)
     //SetTextJustification(0)
     typeof cb === "function" && cb();
-    EndTextCommandDisplayText(x || 0, y || 0);
+    EndTextCommandDisplayText(opts?.x || 0, opts?.y || 0);
   }
 
   static DrawText2(
-    { duration, label }: { duration?: number; label?: string },
-    cb: () => void
+    opts?: { duration?: number; label?: string },
+    cb?: () => void
   ) {
-    BeginTextCommandPrint(label || "STRING");
+    BeginTextCommandPrint(opts?.label || "STRING");
     typeof cb === "function" && cb();
-    EndTextCommandPrint(duration || 5000, true);
+    EndTextCommandPrint(opts?.duration || 5000, true);
   }
 
   static FeedPostTicker(
