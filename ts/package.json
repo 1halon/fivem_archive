@@ -1,14 +1,10 @@
 {
-  "scripts": {
-    "clean": "rimraf ../resources/[ts]/",
-    "build": "pnpm run clean && turbo run build"
-  },
-  "devDependencies": {
+  "dependencies": {
     "@citizenfx/client": "latest",
     "@citizenfx/server": "latest",
     "@types/node": "latest",
-    "copyfiles": "latest",
     "glob": "latest",
+    "pocketbase": "latest",
     "rimraf": "latest",
     "ts-loader": "latest",
     "typescript": "latest",
@@ -16,5 +12,9 @@
     "webpack": "latest",
     "webpack-cli": "latest"
   },
-  "packageManager": "pnpm@7.18.0"
+  "packageManager": "pnpm@7.18.0",
+  "scripts": {
+    "clean": "rimraf ../resources/[ts]/",
+    "build": "pnpm run clean && turbo run build"
+  }
 }

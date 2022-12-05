@@ -1,4 +1,3 @@
-import { Delay } from "@base/shared/main";
 import LoadFunctions from "./utilities/load";
 
 export = class PlayerFunctions {

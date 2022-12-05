@@ -1,5 +1,4 @@
 // DEPRECATED
-
 (function (__resource, excludedDirs, progress) {
   const { spawn } = require("child_process"),
     { createWriteStream, existsSync, statSync, mkdirSync } = require("fs"),

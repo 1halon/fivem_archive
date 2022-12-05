@@ -3,7 +3,7 @@ type Color = keyof typeof Logger.colors;
 type Level = "error" | "log" | "warn";
 
 export default class Logger {
-  static colors = {
+  public static colors = {
     0: "^0",
     1: "^1",
     2: "^2",
@@ -26,17 +26,17 @@ export default class Logger {
     blue2: "^9",
   };
 
-  static levels: Level[] = ["error", "log", "warn"];
+  private static levels: Level[] = ["error", "log", "warn"];
 
-  static colorize(text: string, color?: Color) {
+  private static colorize(text: string, color?: Color) {
     return `${this.colors[color || "white"]}${text}${this.colors.white}`;
   }
 
-  static prefix(prefix: string, color?: Color) {
+  private static prefix(prefix: string, color?: Color) {
     return this.colorize(`[${prefix}] `, color || "white");
   }
 
-  static log(message: string, ...args: Array<Level | Arg>) {
+  public static log(message: string, ...args: Array<Level | Arg>) {
     let level: Level = "log";
     if (typeof args[0] === "string" && this.levels.includes(args[0])) {
       level = args[0];
@@ -50,7 +50,7 @@ export default class Logger {
     return log;
   }
 
-  static error(message: string, ...args: Arg[]) {
+  public static error(message: string, ...args: Arg[]) {
     return this.log(
       message,
       "error",
@@ -59,15 +59,15 @@ export default class Logger {
     );
   }
 
-  static info(message: string, ...args: Arg[]) {
+  public static info(message: string, ...args: Arg[]) {
     return this.log(message, { color: "green", prefix: "INFO" }, ...args);
   }
 
-  static verbose(message: string, ...args: Arg[]) {
+  public static verbose(message: string, ...args: Arg[]) {
     return this.log(message, { color: "purple", prefix: "VERBOSE" }, ...args);
   }
 
-  static warn(message: string, ...args: Arg[]) {
+  public static warn(message: string, ...args: Arg[]) {
     return this.log(
       message,
       "warn",
@@ -78,3 +78,9 @@ export default class Logger {
 }
 
 Logger.info("INITIALIZED", { color: "yellow", prefix: "LOGGER" });
+
+type LoggerType = typeof Logger;
+
+declare global {
+  var Logger: LoggerType;
+}

@@ -25,8 +25,7 @@ const config = {
     alias: {
       "@base": path.resolve("resources/base"),
     },
-    extensions: [".ts"],
-    roots: [path.resolve("resources")],
+    extensions: [".ts"]
   },
 };
 

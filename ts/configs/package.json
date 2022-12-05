@@ -1,14 +1,14 @@
 {
-  "name": "configs",
-  "version": "0.0.0",
+  "dependencies": {
+    "@citizenfx/client": "*",
+    "@citizenfx/server": "*",
+    "@types/node": "*"
+  },
   "files": [
     "fxmanifest.lua",
     "tsconfig.json",
     "turbo.json"
   ],
-  "devDependencies": {
-    "@citizenfx/client": "*",
-    "@citizenfx/server": "*",
-    "@types/node": "*"
-  }
+  "name": "configs",
+  "version": "0.0.0"
 }

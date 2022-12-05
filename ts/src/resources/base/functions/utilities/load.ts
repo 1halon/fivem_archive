@@ -1,6 +1,6 @@
-import { Delay } from "@base/shared/main";
+import { Delay } from "@base/shared/functions";
 
-export = class LoadFunctions {
+export default class LoadFunctions {
   static async AnimDict(anim_dict: string) {
     DoesAnimDictExist(anim_dict) && RequestAnimDict(anim_dict);
 

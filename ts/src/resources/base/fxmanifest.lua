@@ -2,4 +2,4 @@ files {
     'nui/**/*'
 }
 
-loadscreen 'nui/loadscreen.html'
+--loadscreen 'nui/loadscreen.html'

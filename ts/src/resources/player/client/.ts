@@ -7,3 +7,4 @@ RegisterCommand(
   },
   false
 );
+

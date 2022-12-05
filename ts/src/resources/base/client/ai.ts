@@ -1,4 +1,3 @@
-import { Delay } from "@base/shared/main";
 import Config from "@base/shared/config";
 
 const { garbagetrucks, multiplier, randomboats, randomcops } = Config["ai"],
@@ -14,8 +13,8 @@ const { garbagetrucks, multiplier, randomboats, randomcops } = Config["ai"],
 setTick(async function () {
   await Delay();
   SetGarbageTrucks(garbagetrucks);
-  //for (const key in multiplier_funcs)
-  //multiplier_funcs[key](multiplier, multiplier);
+  for (const key in multiplier_funcs)
+    multiplier_funcs[key](multiplier, multiplier);
   SetRandomBoats(randomboats);
 
   const player = PlayerId(),
