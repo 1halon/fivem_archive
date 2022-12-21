@@ -7,7 +7,7 @@ const glob = require("glob"),
  */
 const config = {
   entry: glob
-    .sync("./resources/*/client/*.ts", { dot: true })
+    .sync("./resources/**/*.ts", { dot: true })
     .reduce(function (a, b) {
       a[b.split("resources/")[1].replace(/(.ts)/g, "")] = b;
       return a;

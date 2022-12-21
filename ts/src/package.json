@@ -3,7 +3,7 @@
     "configs": "workspace:*"
   },
   "scripts": {
-    "build": "pnpm run clean && npx tsc && npx webpack && pnpm run export && pnpm run copy:manifest && pnpm run manifest && pnpm run copy:files",
+    "build": "pnpm run clean && npx webpack && pnpm run export && pnpm run copy:manifest && pnpm run manifest && pnpm run copy:files",
     "clean": "rimraf dist/ .turbo/",
     "copy:files": "bash bash/copy:files",
     "copy:manifest": "bash bash/copy:manifest",

@@ -1,5 +1,5 @@
-import Controls from "@base/shared/controls.js";
-import type { Control } from "@base/shared/controls.js";
+import Controls from "@base/shared/controls";
+import type { Control } from "@base/shared/controls";
 
 const kn = (key: string, value: string) =>
     Controls.find((control: Control) => control[key] === value),
