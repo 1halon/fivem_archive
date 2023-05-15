@@ -35,9 +35,9 @@
   <ItemGroup>
     <None Include=".template.config\template.json" />
     <None Include="App.config" />
-    <None Include="Client\Realifev.Client.csproj" />
+    <None Include="Client\RealifevTemplate.Client.csproj" />
     <None Include="packages.config" />
-    <None Include="Server\Realifev.Server.csproj" />
+    <None Include="Server\RealifevTemplate.Server.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client\Main.cs" />
