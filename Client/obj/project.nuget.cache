@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "QX+MxJN+qRPKEF8V/Bmb7H184cQZ2Lcdv38aw4WgGsZelzeeZobfIdH+lLUcCQK8JMAhgCv+OyV1z2BZYWMiJw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\halil\\Storage\\RealifevTemplate\\Client\\RealifevTemplate.Client.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\halil\\.nuget\\packages\\citizenfx.core.client\\1.0.6370\\citizenfx.core.client.1.0.6370.nupkg.sha512",
+    "C:\\Users\\halil\\.nuget\\packages\\citizenfx.framework.client\\0.2.3\\citizenfx.framework.client.0.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}

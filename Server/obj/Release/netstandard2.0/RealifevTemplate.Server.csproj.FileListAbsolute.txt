@@ -1,0 +1,10 @@
+C:\Users\halil\Storage\RealifevTemplate\Server\bin\Release\netstandard2.0\RealifevTemplate.Server.deps.json
+C:\Users\halil\Storage\RealifevTemplate\Server\bin\Release\netstandard2.0\RealifevTemplate.Server.net.dll
+C:\Users\halil\Storage\RealifevTemplate\Server\bin\Release\netstandard2.0\RealifevTemplate.Server.net.pdb
+C:\Users\halil\Storage\RealifevTemplate\Server\obj\Release\netstandard2.0\RealifevTemplate.Server.csproj.AssemblyReference.cache
+C:\Users\halil\Storage\RealifevTemplate\Server\obj\Release\netstandard2.0\RealifevTemplate.Server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\halil\Storage\RealifevTemplate\Server\obj\Release\netstandard2.0\RealifevTemplate.Server.AssemblyInfoInputs.cache
+C:\Users\halil\Storage\RealifevTemplate\Server\obj\Release\netstandard2.0\RealifevTemplate.Server.AssemblyInfo.cs
+C:\Users\halil\Storage\RealifevTemplate\Server\obj\Release\netstandard2.0\RealifevTemplate.Server.csproj.CoreCompileInputs.cache
+C:\Users\halil\Storage\RealifevTemplate\Server\obj\Release\netstandard2.0\RealifevTemplate.Server.net.dll
+C:\Users\halil\Storage\RealifevTemplate\Server\obj\Release\netstandard2.0\RealifevTemplate.Server.net.pdb

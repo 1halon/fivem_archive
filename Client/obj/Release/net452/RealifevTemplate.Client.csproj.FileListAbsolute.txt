@@ -1,0 +1,9 @@
+C:\Users\halil\Storage\RealifevTemplate\Client\bin\Release\net452\RealifevTemplate.Client.net.dll
+C:\Users\halil\Storage\RealifevTemplate\Client\bin\Release\net452\CitizenFX.Core.Client.dll
+C:\Users\halil\Storage\RealifevTemplate\Client\obj\Release\net452\RealifevTemplate.Client.csproj.AssemblyReference.cache
+C:\Users\halil\Storage\RealifevTemplate\Client\obj\Release\net452\RealifevTemplate.Client.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\halil\Storage\RealifevTemplate\Client\obj\Release\net452\RealifevTemplate.Client.AssemblyInfoInputs.cache
+C:\Users\halil\Storage\RealifevTemplate\Client\obj\Release\net452\RealifevTemplate.Client.AssemblyInfo.cs
+C:\Users\halil\Storage\RealifevTemplate\Client\obj\Release\net452\RealifevTemplate.Client.csproj.CoreCompileInputs.cache
+C:\Users\halil\Storage\RealifevTemplate\Client\obj\Release\net452\RealifevTemplate.Client.csproj.CopyComplete
+C:\Users\halil\Storage\RealifevTemplate\Client\obj\Release\net452\RealifevTemplate.Client.net.dll
