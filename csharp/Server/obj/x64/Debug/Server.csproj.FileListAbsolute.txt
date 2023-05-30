@@ -1,6 +1,0 @@
-C:\Users\halil\Storage\realifev\realifev-resource-templates\c#\Build\Server.net.dll
-C:\Users\halil\Storage\realifev\realifev-resource-templates\c#\Build\Server.net.pdb
-C:\Users\halil\Storage\realifev\realifev-resource-templates\c#\Server\obj\x64\Debug\Server.csproj.AssemblyReference.cache
-C:\Users\halil\Storage\realifev\realifev-resource-templates\c#\Server\obj\x64\Debug\Server.csproj.CoreCompileInputs.cache
-C:\Users\halil\Storage\realifev\realifev-resource-templates\c#\Server\obj\x64\Debug\Server.net.dll
-C:\Users\halil\Storage\realifev\realifev-resource-templates\c#\Server\obj\x64\Debug\Server.net.pdb

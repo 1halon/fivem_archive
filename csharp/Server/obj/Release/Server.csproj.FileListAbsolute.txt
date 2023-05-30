@@ -1,2 +1,0 @@
-C:\Users\halil\Storage\realifev\realifev-resource-templates\c#\Server\obj\Release\Server.csproj.AssemblyReference.cache
-C:\Users\halil\Storage\realifev\realifev-resource-templates\c#\Server\obj\Release\Server.csproj.CoreCompileInputs.cache

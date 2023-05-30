@@ -5,6 +5,5 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CitizenFX.Core.Server" Version="*" />
-    <Compile Include="../Shared/**/*.cs" />
   </ItemGroup>
 </Project>
