@@ -1,0 +1,9 @@
+#!/bin/bash
+
+case "$OSTYPE" in
+msys*) os="windows" ;;
+cygwin*) os="windows" ;;
+*) os="linux" ;;
+esac
+
+echo $os

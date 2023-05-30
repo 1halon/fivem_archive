@@ -1,0 +1,19 @@
+#!/bin/bash
+# https://stackoverflow.com/a/246128
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+
+if [[ ! -d "$SCRIPT_DIR/server" ]]; then
+    $SCRIPT_DIR/download
+fi
+
+OS=$($SCRIPT_DIR/getos)
+
+if [ $OS == "linux" ]; then
+    EXE=run.sh
+fi
+
+if [ $OS == "windows" ]; then
+    EXE=FXServer.exe
+fi
+
+(cd $SCRIPT_DIR/server-data && $SCRIPT_DIR/server/$EXE +exec server.cfg)

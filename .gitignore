@@ -1,0 +1,4 @@
+/server*
+!server*.cfg
+!server-data
+server-data/cache

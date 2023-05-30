@@ -1,0 +1,37 @@
+#!/bin/bash
+
+if [ -z $1 ]; then
+    echo "No build given, using latest recommended (5848-4f71128ee48b07026d6d7229a60ebc5f40f2b9db)"
+fi
+
+function carchiver() {
+    $1 &>/dev/null && echo Using $1 as an archiver || (echo $0: $1 is not recognized && exit 2)
+}
+
+# https://stackoverflow.com/a/246128
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+OS=$($SCRIPT_DIR/getos)
+
+if [ $OS == "linux" ]; then
+    archiver="tar"
+    carchiver $archiver
+    build="build_proot_linux"
+    filename="fx.tar.xz"
+    commandArgs="$archiver xf {filename} -C server"
+fi
+
+if [ $OS == "windows" ]; then
+    archiver="7z"
+    carchiver $archiver
+    build="build_server_windows"
+    filename="server.7z"
+    command="$archiver x {filename} -oserver"
+fi
+
+if [[ ! -f "server.7z" ]]; then
+    curl https://runtime.fivem.net/artifacts/fivem/$build/master/${1-"5848-4f71128ee48b07026d6d7229a60ebc5f40f2b9db"}/$filename -O
+fi
+
+command=${command/"{filename}"/$SCRIPT_DIR/$filename}
+
+rm -rf server && $command #&& rm -f $filename
