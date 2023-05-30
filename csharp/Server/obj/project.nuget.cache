@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "N5B8i/E9gfldTSYFy1Hq+Fb/4lT/xUj3nDpMMmMWl12Yr4Aq3ewBeNqSgEL84SFdl0IAwe6adU5yBdPIMDRNxA==",
+  "dgSpecHash": "zESMmjXzYPQuDCo7fX2l2evSGYb7cDQx/SVQ5qqq5QZ4By3wNMYk4BRHoblckHaLqU9u3zxkzvL8icTCMo5LPw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\halil\\Storage\\RealifevTemplate\\Server\\RealifevTemplate.Server.csproj",
+  "projectFilePath": "C:\\Users\\halil\\Storage\\realifev\\realifev-resource-templates\\csharp\\Server\\Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\halil\\.nuget\\packages\\citizenfx.core.server\\1.0.6335\\citizenfx.core.server.1.0.6335.nupkg.sha512",
     "C:\\Users\\halil\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",

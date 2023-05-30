@@ -1,0 +1,5 @@
+C:\Users\halil\Storage\realifev\realifev-resource-templates\c#\Server\bin\Debug\netstandard2.0\publish\Server.dll
+C:\Users\halil\Storage\realifev\realifev-resource-templates\c#\Server\bin\Debug\netstandard2.0\publish\Server.deps.json
+C:\Users\halil\Storage\realifev\realifev-resource-templates\c#\Server\bin\Debug\netstandard2.0\publish\Server.pdb
+C:\Users\halil\Storage\realifev\realifev-resource-templates\c#\Server\bin\Debug\netstandard2.0\publish\CitizenFX.Core.Server.dll
+C:\Users\halil\Storage\realifev\realifev-resource-templates\c#\Server\bin\Debug\netstandard2.0\publish\SharpConfig.dll

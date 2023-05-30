@@ -1,0 +1,19 @@
+#!/bin/bash
+#dotnet msbuild -t:restore,build -p:Configuration=Release;RestorePackagesConfig=true
+
+# https://stackoverflow.com/a/246128
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+dotnetp="dotnet publish -c Release"
+
+dist=$SCRIPT_DIR/dist
+rm -rf $dist
+mkdir -p $dist
+
+dirs=('Client' 'Server' 'Shared')
+for dir in "${dirs[@]}"; do
+    mkdir -p $dist/$dir
+    cd $SCRIPT_DIR/$dir && $dotnetp && cp -fr ./bin/Release/*/publish/*.dll ../dist/$dir && rm -fr ./bin && cd ..
+done
+
+rm -rf $dist/*/CitizenFX.Core.*.dll
+cp $SCRIPT_DIR/fxmanifest.lua $dist

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Client</id>
+    <version>1.0.0</version>
+    <authors>Client</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5.2">
+        <dependency id="CitizenFX.Core.Client" version="1.0.6370" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework=".NETFramework4.5.2">
+        <frameworkReference name="CitizenFX.Framework.Client" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="C:\Users\halil\Storage\realifev\realifev-resource-templates\c#\Client\bin\Debug\net452\Client.net.dll" target="lib\net452\Client.net.dll" />
+  </files>
+</package>

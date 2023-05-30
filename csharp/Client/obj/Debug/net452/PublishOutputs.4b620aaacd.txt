@@ -1,0 +1,2 @@
+C:\Users\halil\Storage\realifev\realifev-resource-templates\c#\Client\bin\Debug\net452\publish\Client.net.dll
+C:\Users\halil\Storage\realifev\realifev-resource-templates\c#\Client\bin\Debug\net452\publish\CitizenFX.Core.Client.dll

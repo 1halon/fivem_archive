@@ -204,7 +204,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "CitizenFX.Core.Server >= 1.0.*",
+      "CitizenFX.Core.Server >= *",
       "NETStandard.Library >= 2.0.3"
     ]
   },
@@ -214,11 +214,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\halil\\Storage\\RealifevTemplate\\Server\\RealifevTemplate.Server.csproj",
-      "projectName": "RealifevTemplate.Server",
-      "projectPath": "C:\\Users\\halil\\Storage\\RealifevTemplate\\Server\\RealifevTemplate.Server.csproj",
+      "projectUniqueName": "C:\\Users\\halil\\Storage\\realifev\\realifev-resource-templates\\csharp\\Server\\Server.csproj",
+      "projectName": "Server",
+      "projectPath": "C:\\Users\\halil\\Storage\\realifev\\realifev-resource-templates\\csharp\\Server\\Server.csproj",
       "packagesPath": "C:\\Users\\halil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\halil\\Storage\\RealifevTemplate\\Server\\obj\\",
+      "outputPath": "C:\\Users\\halil\\Storage\\realifev\\realifev-resource-templates\\csharp\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\halil\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -249,7 +249,7 @@
         "dependencies": {
           "CitizenFX.Core.Server": {
             "target": "Package",
-            "version": "[1.0.*, )"
+            "version": "[*, )"
           },
           "NETStandard.Library": {
             "suppressParent": "All",

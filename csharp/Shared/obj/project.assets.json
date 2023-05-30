@@ -15,18 +15,15 @@
           }
         }
       },
-      "LemonUI.FiveM/1.9.4": {
+      "SharpConfig/3.2.9.1": {
         "type": "package",
-        "dependencies": {
-          "CitizenFX.Core.Client": "1.0.6008"
-        },
         "compile": {
-          "lib/net452/LemonUI.FiveM.dll": {
+          "lib/net45/SharpConfig.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net452/LemonUI.FiveM.dll": {
+          "lib/net45/SharpConfig.dll": {
             "related": ".xml"
           }
         }
@@ -47,26 +44,35 @@
         "lib/net45/CitizenFX.Core.Client.xml"
       ]
     },
-    "LemonUI.FiveM/1.9.4": {
-      "sha512": "e1QiPu0pwYi7qwuUK2CKkLIxCLv96BU4vdUOYQJF77yP3+dMFojnplp1yieVMCf+BFNUwC9kg5WrV5wBAiK6eA==",
+    "SharpConfig/3.2.9.1": {
+      "sha512": "RzOPiMowwBEV+GqWtiDN/Ck4F29XzIwSM1JPOmb+t+zOiodp4I+2WsVOnXCVbdhXNi52paZNYkGoP9+oXD/COw==",
       "type": "package",
-      "path": "lemonui.fivem/1.9.4",
+      "path": "sharpconfig/3.2.9.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "README.md",
-        "lemonui.fivem.1.9.4.nupkg.sha512",
-        "lemonui.fivem.nuspec",
-        "lib/net452/LemonUI.FiveM.dll",
-        "lib/net452/LemonUI.FiveM.xml",
-        "logo.png"
+        "SharpConfigLogo.png",
+        "lib/net20/SharpConfig.dll",
+        "lib/net20/SharpConfig.xml",
+        "lib/net35/SharpConfig.dll",
+        "lib/net35/SharpConfig.xml",
+        "lib/net40/SharpConfig.dll",
+        "lib/net40/SharpConfig.xml",
+        "lib/net45/SharpConfig.dll",
+        "lib/net45/SharpConfig.xml",
+        "lib/net461/SharpConfig.dll",
+        "lib/net461/SharpConfig.xml",
+        "lib/netstandard2.0/SharpConfig.dll",
+        "lib/netstandard2.0/SharpConfig.xml",
+        "sharpconfig.3.2.9.1.nupkg.sha512",
+        "sharpconfig.nuspec"
       ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.5.2": [
       "CitizenFX.Core.Client >= 1.0.*",
-      "LemonUI.FiveM >= *"
+      "sharpconfig >= *"
     ]
   },
   "packageFolders": {
@@ -75,11 +81,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\halil\\Storage\\realifev\\realifev-resource-templates\\csharp\\Client\\Client.csproj",
-      "projectName": "Client",
-      "projectPath": "C:\\Users\\halil\\Storage\\realifev\\realifev-resource-templates\\csharp\\Client\\Client.csproj",
+      "projectUniqueName": "C:\\Users\\halil\\Storage\\realifev\\realifev-resource-templates\\csharp\\Shared\\Shared.csproj",
+      "projectName": "Shared",
+      "projectPath": "C:\\Users\\halil\\Storage\\realifev\\realifev-resource-templates\\csharp\\Shared\\Shared.csproj",
       "packagesPath": "C:\\Users\\halil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\halil\\Storage\\realifev\\realifev-resource-templates\\csharp\\Client\\obj\\",
+      "outputPath": "C:\\Users\\halil\\Storage\\realifev\\realifev-resource-templates\\csharp\\Shared\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\halil\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -112,7 +118,7 @@
             "target": "Package",
             "version": "[1.0.*, )"
           },
-          "LemonUI.FiveM": {
+          "sharpconfig": {
             "target": "Package",
             "version": "[*, )"
           }
