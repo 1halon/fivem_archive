@@ -12,7 +12,7 @@ namespace RealifevTemplate.Shared
     {
         public Main()
         {
-            
+            Debug.WriteLine("Hi from RealifevTemplate.Shared!");
         }
     }
 }

@@ -2,5 +2,7 @@
   Sdk="CitizenFX.Sdk.Client/0.2.3">
   <ItemGroup>
     <PackageReference Include="LemonUI.FiveM" Version="*" />
+    <PackageReference Include="sharpconfig" Version="*" />
+    <Compile Include="../Shared/*.cs" />
   </ItemGroup>
 </Project>

@@ -9,20 +9,17 @@ dist=$SCRIPT_DIR/dist
 rm -rf $dist
 mkdir -p $dist
 
-dirs=('Client' 'Server' 'Shared')
+dirs=('Client' 'Server')
 for dir in "${dirs[@]}"; do
     cd $SCRIPT_DIR/$dir
     $dotnetp
     mkdir -p $dist/$dir
     cp -r ./bin/Release/*/publish/*.dll ../dist/$dir
-    rm -fr ./bin ./obj
+    #rm -fr ./bin ./obj
     cd ..
 done
 
 echo "[Realifev-CSharp-Template]" >$dist/config.ini
-for dir in "${dirs[@]::${#dirs[@]}-1}"; do
-    cp -r $dist/Shared/* $dist/$dir
-done
 cp $SCRIPT_DIR/fxmanifest.lua $dist
 
-rm -rf $dist/Shared $dist/*/CitizenFX.Core.*.dll
+rm -rf $dist/*/CitizenFX.Core.*.dll

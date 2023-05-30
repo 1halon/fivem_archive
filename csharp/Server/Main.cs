@@ -12,6 +12,7 @@ namespace RealifevTemplate.Server
         public Main()
         {
             Debug.WriteLine("Hi from RealifevTemplate.Server!");
+            
         }
 
         [Command("hello_server")]
