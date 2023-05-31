@@ -1,0 +1,3 @@
+[submodule "realifev-resource-templates"]
+	path = realifev-resource-templates
+	url = https://github.com/halondevelopment/realifev-resource-templates.git
