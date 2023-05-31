@@ -1,8 +1,8 @@
-fx_version 'bodacious'
+fx_version 'cerulean'
 game 'gta5'
 
 files {
-    'Client/*.dll'
+    'Client/*.dll',
     'config.ini'
 }
 

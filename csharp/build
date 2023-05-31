@@ -1,15 +1,13 @@
 #!/bin/bash
-#dotnet msbuild -t:restore,build -p:Configuration=Release;RestorePackagesConfig=true
-
 # https://stackoverflow.com/a/246128
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
-dotnetp="dotnet publish -c Release"
 
 dist=$SCRIPT_DIR/dist
 rm -rf $dist
 mkdir -p $dist
 
 dirs=('Client' 'Server')
+dotnetp="dotnet publish -c Release"
 for dir in "${dirs[@]}"; do
     cd $SCRIPT_DIR/$dir
     $dotnetp
@@ -19,7 +17,5 @@ for dir in "${dirs[@]}"; do
     cd ..
 done
 
-echo "[Realifev-CSharp-Template]" >$dist/config.ini
+echo "[RealifevTemplate]" >$dist/config.ini
 cp $SCRIPT_DIR/fxmanifest.lua $dist
-
-rm -rf $dist/*/CitizenFX.Core.*.dll
