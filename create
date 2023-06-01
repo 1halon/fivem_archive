@@ -1,0 +1,36 @@
+#!/bin/bash
+# https://stackoverflow.com/a/246128
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+
+LANG=csharp
+
+while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do
+    case $1 in
+    -d | --dir)
+        shift
+        EXT_DIR=/$1
+        ;;
+    -f | --force)
+        FORCE=--force
+        ;;
+    -l | --lang)
+        shift
+        LANG=$1
+        ;;
+    esac
+    shift
+done
+if [[ "$1" == '--' ]]; then shift; fi
+
+DIR=$SCRIPT_DIR/server-data/resources/[$LANG]$EXT_DIR
+
+case $LANG in
+
+csharp)
+    mkdir -p $DIR
+    cd $DIR
+    dotnet new realifev-resource -o ${1:-RealifevResource} $FORCE
+    cd -
+    ;;
+
+esac
