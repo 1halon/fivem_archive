@@ -15,8 +15,5 @@ for dir in "${dirs[@]}"; do
     mkdir -p $dist/$dir
     cp -r ./bin/Release/*/publish/*.dll $dist/$dir
     #rm -fr ./bin ./obj
-    cd ..
+    cd - &>/dev/null
 done
-
-echo "[RealifevTemplate]" >$dist/config.ini
-cp $src/fxmanifest.lua $dist
