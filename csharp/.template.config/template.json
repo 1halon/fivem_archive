@@ -9,18 +9,5 @@
   "tags": {
     "language": "C#",
     "type": "project"
-  },
-  "primaryOutputs": [
-    { "path": "Client/RealifevTemplate.Client.csproj" },
-    { "path": "Server/RealifevTemplate.Server.csproj" }
-  ],
-  "postActions": [
-    {
-      "description": "Add projects to solution",
-      "manualInstructions": [],
-      "primaryOutputIndexes": "0;1",
-      "actionId": "D396686C-DE0E-4DE6-906D-291CD29FC5DE",
-      "continueOnError": true
-    }
-  ]
+  }
 }

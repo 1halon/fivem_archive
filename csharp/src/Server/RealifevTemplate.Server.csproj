@@ -5,8 +5,9 @@
     <TargetName>$(AssemblyName).net</TargetName>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CitizenFX.Core.Server" Version="*" />
-    <PackageReference Include="sharpconfig" Version="*" />
-    <Compile Include="../Shared/*.cs" />
+    <PackageReference Include="CitizenFX.Core.Server" Version="*"/>
+    <PackageReference Include="sharpconfig" Version="*"/>
+    <PackageReference Include="System.Memory" Version="*"/>
+    <Compile Include="../Shared/*.cs"/>
   </ItemGroup>
 </Project>
