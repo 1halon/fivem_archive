@@ -5,6 +5,7 @@ using static CitizenFX.Core.Native.API;
 
 using SharpConfig;
 
+#pragma warning disable 1998
 namespace RealifevTemplate.Shared
 {
     public class Config : BaseScript

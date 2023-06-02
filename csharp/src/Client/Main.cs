@@ -5,6 +5,7 @@ using static CitizenFX.Core.Native.API;
 
 using SharpConfig;
 
+#pragma warning disable 1998
 namespace RealifevTemplate.Client
 {
     using static Shared.Config;
@@ -14,7 +15,7 @@ namespace RealifevTemplate.Client
         {
             HandleConfiguration(new Action<Section, Configuration>((section, config) =>
             {
-
+                
             }));
         }
     }
