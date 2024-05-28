@@ -1,0 +1,2 @@
+#!/bin/bash
+find resources -iname 'fxmanifest.lua' -exec sh -c 'printf "\n$(cat $1)" >> "../../resources/[ts]/$(echo $1 | cut -d/ -f2)/fxmanifest.lua"' _ {} \;

@@ -1,0 +1,2 @@
+#!/bin/bash
+find ../../resources/[ts]/ -type f '(' -wholename '*server/*.js' -o -wholename '*shared/*.js' ')' -exec sh -c 'echo "exports = { };\n$(cat $1)" > $1' _ {} \;
