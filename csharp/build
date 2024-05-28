@@ -1,0 +1,19 @@
+#!/bin/bash
+# https://stackoverflow.com/a/246128
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+
+dist=$SCRIPT_DIR/dist
+src=$SCRIPT_DIR/src
+rm -rf $dist
+mkdir -p $dist
+
+dirs=('Client' 'Server')
+dotnetp="dotnet publish -c Release"
+for dir in "${dirs[@]}"; do
+    cd $src/$dir
+    $dotnetp
+    mkdir -p $dist/$dir
+    cp -r ./bin/Release/*/publish/*.dll $dist/$dir
+    #rm -fr ./bin ./obj
+    cd - &>/dev/null
+done

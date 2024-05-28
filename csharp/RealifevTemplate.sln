@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealifevTemplate.Client", "src\Client\RealifevTemplate.Client.csproj", "{4826BBFF-F77B-4419-BD6D-3330F74A34B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealifevTemplate.Server", "src\Server\RealifevTemplate.Server.csproj", "{421B00E5-3C34-4CE6-BEC8-37E66F739EC0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E407AEA-81CB-44FB-ACF0-444E69BDBC72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E407AEA-81CB-44FB-ACF0-444E69BDBC72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E407AEA-81CB-44FB-ACF0-444E69BDBC72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E407AEA-81CB-44FB-ACF0-444E69BDBC72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15C0EFB3-6295-4446-A54A-25FC1753E9E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15C0EFB3-6295-4446-A54A-25FC1753E9E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15C0EFB3-6295-4446-A54A-25FC1753E9E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15C0EFB3-6295-4446-A54A-25FC1753E9E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4826BBFF-F77B-4419-BD6D-3330F74A34B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4826BBFF-F77B-4419-BD6D-3330F74A34B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4826BBFF-F77B-4419-BD6D-3330F74A34B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4826BBFF-F77B-4419-BD6D-3330F74A34B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{421B00E5-3C34-4CE6-BEC8-37E66F739EC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{421B00E5-3C34-4CE6-BEC8-37E66F739EC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{421B00E5-3C34-4CE6-BEC8-37E66F739EC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{421B00E5-3C34-4CE6-BEC8-37E66F739EC0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4826BBFF-F77B-4419-BD6D-3330F74A34B0} = {BD20A5C3-82CB-4ED6-9590-779AE489A2CF}
+		{421B00E5-3C34-4CE6-BEC8-37E66F739EC0} = {BD20A5C3-82CB-4ED6-9590-779AE489A2CF}
+	EndGlobalSection
+EndGlobal
