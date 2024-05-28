@@ -1,9 +1,9 @@
 [submodule "server-data/resources/[others]/mysql-async"]
-	path = server-data/resources/[others]/mysql-async
+	path = halon-fivem/server-data/resources/[others]/mysql-async
 	url = https://github.com/brouznouf/fivem-mysql-async
 [submodule "server-data/resources/[others]/pma-voice"]
-	path = server-data/resources/[others]/pma-voice
+	path = halon-fivem/server-data/resources/[others]/pma-voice
 	url = https://github.com/AvarianKnight/pma-voice.git
 [submodule "server-data/resources/[native]/screenshot-basic"]
-	path = server-data/resources/[native]/screenshot-basic
+	path = halon-fivem/server-data/resources/[native]/screenshot-basic
 	url = https://github.com/citizenfx/screenshot-basic.git
