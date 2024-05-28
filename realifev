@@ -1,0 +1,124 @@
+#!/bin/bash
+# https://stackoverflow.com/a/246128
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+SERVER_DIR="$SCRIPT_DIR/server"
+SERVER_DATA_DIR="$SCRIPT_DIR/server-data"
+
+case "$OSTYPE" in
+msys*) OS="windows" ;;
+cygwin*) OS="windows" ;;
+*) OS="linux" ;;
+esac
+
+function c_download() {
+    function chech_archiver() {
+        $1 1>/dev/null || exit 2
+    }
+
+    case $OS in
+    "linux")
+        archiver="tar"
+        chech_archiver "$archiver --help"
+        build="build_proot_linux"
+        filename="fx.tar.xz"
+        extract="$archiver xf {filename} -C $SERVER_DIR"
+        ;;
+    "windows")
+        archiver="7z"
+        check_archiver $archiver
+        build="build_server_windows"
+        filename="server.7z"
+        extract="$archiver x {filename} -o$SERVER_DIR"
+        ;;
+    esac
+
+    keep=true
+    while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do
+        case $1 in
+        -b | --build)
+            shift
+            buildID=$1
+            ;;
+        -k | --keep)
+            keep=false
+            ;;
+        esac
+        shift
+    done
+    if [[ "$1" == '--' ]]; then shift; fi
+
+    if [[ ! -f "$filename" ]]; then
+        curl https://runtime.fivem.net/artifacts/fivem/$build/master/${buildID:-"5848-4f71128ee48b07026d6d7229a60ebc5f40f2b9db"}/$filename -O
+    fi
+
+    extract=${extract/"{filename}"/"$SCRIPT_DIR/$filename"}
+
+    rm -rf $SERVER_DIR
+    mkdir -p $SERVER_DIR
+    $extract
+    $keep && rm -rf $filename
+
+    exit 0
+}
+
+function c_initiate() {
+    case $OS in
+    "linux")
+        exe="run.sh"
+        ;;
+    "windows")
+        exe="FXServer.exe"
+        ;;
+    esac
+    exe=$SERVER_DIR/$exe
+
+    (cd $SERVER_DATA_DIR && $exe +exec server.cfg)
+
+    exit 0
+}
+
+function c_template() {
+    lang=csharp
+    while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do
+        case $1 in
+        -d | --dir)
+            shift
+            dir=$1
+            ;;
+        -n | --name)
+            shift
+            name=$1
+            ;;
+        -l | --lang)
+            shift
+            lang=$1
+            ;;
+        esac
+        shift
+    done
+    if [[ "$1" == '--' ]]; then shift; fi
+
+    dir=$SERVER_DATA_DIR/resources/[$lang]/${dir}
+    name=${name:-"realifev-resource"}
+
+    mkdir -p $dir/$name
+    cd $dir
+
+    case $lang in
+    csharp) dotnet new realifev-resource -o $name --force ;;
+    typescript) cp -rf $SCRIPT_DIR/template/typescript/* ./$name/ && (cd $name && pnpm install) ;;
+    esac
+
+    cd - &>/dev/null
+
+    exit 0
+}
+
+func=c_$1
+if [[ $(type -t $func) == "function" ]]; then
+    $func ${@:2}
+else
+    echo $0: "\"$1\" is not a valid operation." && exit 2
+fi
+
+exit 0
